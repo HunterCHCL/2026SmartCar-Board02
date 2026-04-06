@@ -1,0 +1,5 @@
+../Core/Src/UARTComms.c:20:6:UARTComms_Transmmit_Data	1
+../Core/Src/UARTComms.c:31:6:UARTComms_Receive_Data	4
+../Core/Src/UARTComms.c:53:6:HAL_UARTEx_RxEventCallback	3
+../Core/Src/UARTComms.c:65:6:UARTComms_Init	1
+../Core/Src/UARTComms.c:70:6:CommsTask	4

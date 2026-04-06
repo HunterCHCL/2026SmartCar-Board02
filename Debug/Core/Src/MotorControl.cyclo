@@ -1,0 +1,13 @@
+../Core/Src/MotorControl.c:18:6:MotorControl_Init	1
+../Core/Src/MotorControl.c:59:6:Motor_SetState	11
+../Core/Src/MotorControl.c:153:6:Motor_SetPWM	4
+../Core/Src/MotorControl.c:179:6:Motor_Drive	3
+../Core/Src/MotorControl.c:198:6:Motor_SetTargetPosition	3
+../Core/Src/MotorControl.c:212:6:Motor_SetTargetVelocity	3
+../Core/Src/MotorControl.c:240:9:Motor_RL_ReadEncoder	1
+../Core/Src/MotorControl.c:247:9:Motor_RR_ReadEncoder	1
+../Core/Src/MotorControl.c:254:8:Motor_DirFactor	3
+../Core/Src/MotorControl.c:269:13:Motor_UpdateMotor	4
+../Core/Src/MotorControl.c:305:6:Motor_RL_Update	1
+../Core/Src/MotorControl.c:312:6:Motor_RR_Update	1
+../Core/Src/MotorControl.c:320:6:MotorTask	1
