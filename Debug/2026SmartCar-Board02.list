@@ -35,17 +35,17 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING, OCTETS
  15 .debug_rnglists 000010f3  00000000  00000000  00027e08  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 16 .debug_macro  0001ae97  00000000  00000000  00028efb  2**0
+ 16 .debug_macro  0001aeaf  00000000  00000000  00028efb  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 17 .debug_line   0001a6f5  00000000  00000000  00043d92  2**0
+ 17 .debug_line   0001a6f5  00000000  00000000  00043daa  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 18 .debug_str    00095847  00000000  00000000  0005e487  2**0
+ 18 .debug_str    000958b2  00000000  00000000  0005e49f  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .comment      00000043  00000000  00000000  000f3cce  2**0
+ 19 .comment      00000043  00000000  00000000  000f3d51  2**0
                   CONTENTS, READONLY
- 20 .debug_frame  00005bac  00000000  00000000  000f3d14  2**2
+ 20 .debug_frame  00005bac  00000000  00000000  000f3d94  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 21 .debug_line_str 0000005a  00000000  00000000  000f98c0  2**0
+ 21 .debug_line_str 0000005a  00000000  00000000  000f9940  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
 
 Disassembly of section .text:
@@ -698,7 +698,7 @@ void MotorControl_Init(void)
     // PID_init(&Motor_FR.position_pid, PID_POSITION, position_pid_params, 144.0f, 50.0f);
     // PID_init(&Motor_FR.velocity_pid, PID_POSITION, speed_pid_params, 144.0f, 50.0f);
 
-    PID_init(&Motor_RL.position_pid, PID_POSITION, position_pid_params, 36.0f, 15.0f);
+    PID_init(&Motor_RL.position_pid, PID_POSITION, position_pid_params, Motor_Speed_Limit, Motor_Position_I_Limit);
  80007cc:	f107 020c 	add.w	r2, r7, #12
  80007d0:	4b1d      	ldr	r3, [pc, #116]	@ (8000848 <MotorControl_Init+0x110>)
  80007d2:	9300      	str	r3, [sp, #0]
@@ -706,7 +706,7 @@ void MotorControl_Init(void)
  80007d6:	2100      	movs	r1, #0
  80007d8:	4819      	ldr	r0, [pc, #100]	@ (8000840 <MotorControl_Init+0x108>)
  80007da:	f000 fc65 	bl	80010a8 <PID_init>
-    PID_init(&Motor_RL.velocity_pid, PID_POSITION, speed_pid_params, 144.0f, 40.0f);
+    PID_init(&Motor_RL.velocity_pid, PID_POSITION, speed_pid_params, Motor_Power_Limit, Motor_Velocity_I_Limit);
  80007de:	463a      	mov	r2, r7
  80007e0:	4b1b      	ldr	r3, [pc, #108]	@ (8000850 <MotorControl_Init+0x118>)
  80007e2:	9300      	str	r3, [sp, #0]
@@ -714,7 +714,7 @@ void MotorControl_Init(void)
  80007e6:	2100      	movs	r1, #0
  80007e8:	481b      	ldr	r0, [pc, #108]	@ (8000858 <MotorControl_Init+0x120>)
  80007ea:	f000 fc5d 	bl	80010a8 <PID_init>
-    PID_init(&Motor_RR.position_pid, PID_POSITION, position_pid_params, 36.0f, 15.0f);
+    PID_init(&Motor_RR.position_pid, PID_POSITION, position_pid_params, Motor_Speed_Limit, Motor_Position_I_Limit);
  80007ee:	f107 020c 	add.w	r2, r7, #12
  80007f2:	4b15      	ldr	r3, [pc, #84]	@ (8000848 <MotorControl_Init+0x110>)
  80007f4:	9300      	str	r3, [sp, #0]
@@ -722,7 +722,7 @@ void MotorControl_Init(void)
  80007f8:	2100      	movs	r1, #0
  80007fa:	4812      	ldr	r0, [pc, #72]	@ (8000844 <MotorControl_Init+0x10c>)
  80007fc:	f000 fc54 	bl	80010a8 <PID_init>
-    PID_init(&Motor_RR.velocity_pid, PID_POSITION, speed_pid_params, 144.0f, 40.0f);
+    PID_init(&Motor_RR.velocity_pid, PID_POSITION, speed_pid_params, Motor_Power_Limit, Motor_Velocity_I_Limit);
  8000800:	463a      	mov	r2, r7
  8000802:	4b13      	ldr	r3, [pc, #76]	@ (8000850 <MotorControl_Init+0x118>)
  8000804:	9300      	str	r3, [sp, #0]
@@ -761,7 +761,7 @@ void MotorControl_Init(void)
  8000840:	20000034 	.word	0x20000034
  8000844:	2000010c 	.word	0x2000010c
  8000848:	41700000 	.word	0x41700000
- 800084c:	42100000 	.word	0x42100000
+ 800084c:	41f00000 	.word	0x41f00000
  8000850:	42200000 	.word	0x42200000
  8000854:	43100000 	.word	0x43100000
  8000858:	20000094 	.word	0x20000094
