@@ -12,8 +12,8 @@
 Motor_HandleTypeDef Motor_RL;
 Motor_HandleTypeDef Motor_RR;
 
-int32_t Encoder_RL = 0;
-int32_t Encoder_RR = 0;
+// int32_t Encoder_RL = 0;
+// int32_t Encoder_RR = 0;
 
 void MotorControl_Init(void)
 {
@@ -305,14 +305,14 @@ static void Motor_UpdateMotor(Motor_HandleTypeDef* motor, Motor_ID id, int16_t e
 void Motor_RL_Update(void)
 {
     int16_t delta = Motor_DirFactor(Motor_RL_ID)*Motor_RL_ReadEncoder();
-    Encoder_RL += delta;
+    // Encoder_RL += delta;
     Motor_UpdateMotor(&Motor_RL, Motor_RL_ID, delta);
 }
 
 void Motor_RR_Update(void)
 {
     int16_t delta = Motor_DirFactor(Motor_RR_ID)*Motor_RR_ReadEncoder();
-    Encoder_RR += delta;
+    // Encoder_RR += delta;
     Motor_UpdateMotor(&Motor_RR, Motor_RR_ID, delta);
 }
 

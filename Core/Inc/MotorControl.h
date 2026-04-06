@@ -104,8 +104,8 @@ extern Motor_HandleTypeDef Motor_RR;
 // extern int32_t Encoder_FL;
 // extern int32_t Encoder_FR;
 
-extern int32_t Encoder_RL;
-extern int32_t Encoder_RR;
+// extern int32_t Encoder_RL;
+// extern int32_t Encoder_RR;
 
 
 void MotorControl_Init(void);
