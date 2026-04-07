@@ -33,22 +33,10 @@ void MotorControl_Init(void)
     Motor_RL.last_time = HAL_GetTick();
     Motor_RR.last_time = HAL_GetTick();
 
-
-    // PID_init(&Motor_FL.position_pid, PID_POSITION, position_pid_params, 144.0f, 50.0f);//输出最大值，I最大值
-    // PID_init(&Motor_FL.velocity_pid, PID_POSITION, speed_pid_params, 144.0f, 50.0f);
-    // PID_init(&Motor_FR.position_pid, PID_POSITION, position_pid_params, 144.0f, 50.0f);
-    // PID_init(&Motor_FR.velocity_pid, PID_POSITION, speed_pid_params, 144.0f, 50.0f);
-
     PID_init(&Motor_RL.position_pid, PID_POSITION, position_pid_params, Motor_Speed_Limit, Motor_Position_I_Limit);
     PID_init(&Motor_RL.velocity_pid, PID_POSITION, speed_pid_params, Motor_Power_Limit, Motor_Velocity_I_Limit);
     PID_init(&Motor_RR.position_pid, PID_POSITION, position_pid_params, Motor_Speed_Limit, Motor_Position_I_Limit);
     PID_init(&Motor_RR.velocity_pid, PID_POSITION, speed_pid_params, Motor_Power_Limit, Motor_Velocity_I_Limit);
-
-
-    // HAL_TIM_PWM_Start(&Motor_FL_PWM_TIMEBASE, Motor_FL_PWM_CHANNEL);
-    // HAL_TIM_PWM_Start(&Motor_FR_PWM_TIMEBASE, Motor_FR_PWM_CHANNEL);
-    // HAL_TIM_Encoder_Start(&Motor_FL_Encoder_Timebase, TIM_CHANNEL_ALL);
-    // HAL_TIM_Encoder_Start(&Motor_FR_Encoder_Timebase, TIM_CHANNEL_ALL);
 
     HAL_TIM_PWM_Start(&Motor_RL_PWM_TIMEBASE, Motor_RL_PWM_CHANNEL);
     HAL_TIM_PWM_Start(&Motor_RR_PWM_TIMEBASE, Motor_RR_PWM_CHANNEL);

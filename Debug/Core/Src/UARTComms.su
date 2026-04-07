@@ -1,5 +1,6 @@
 ../Core/Src/UARTComms.c:20:6:UARTComms_Transmmit_Data	24	static
 ../Core/Src/UARTComms.c:31:6:UARTComms_Receive_Data	56	static
 ../Core/Src/UARTComms.c:53:6:HAL_UARTEx_RxEventCallback	16	static
-../Core/Src/UARTComms.c:65:6:UARTComms_Init	8	static
-../Core/Src/UARTComms.c:70:6:CommsTask	24	static
+../Core/Src/UARTComms.c:65:6:HAL_UART_ErrorCallback	16	static
+../Core/Src/UARTComms.c:74:6:UARTComms_Init	8	static
+../Core/Src/UARTComms.c:79:6:CommsTask	32	static

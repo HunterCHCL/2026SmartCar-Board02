@@ -62,6 +62,15 @@ void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef *huart, uint16_t Size)
 	}
 }
 
+void HAL_UART_ErrorCallback(UART_HandleTypeDef *huart)
+{
+    if(huart==&UARTComms_Port)
+    {
+        /* 发生错误（如Overrun Error）后重新启动DMA接收 */
+        HAL_UARTEx_ReceiveToIdle_DMA(&UARTComms_Port, receiveBuffer, sizeof(receiveBuffer));
+    }
+}
+
 void UARTComms_Init(void)
 {
 	HAL_UARTEx_ReceiveToIdle_DMA(&UARTComms_Port, receiveBuffer, sizeof(receiveBuffer));
@@ -70,7 +79,8 @@ void UARTComms_Init(void)
 void CommsTask(void *argument)
 {
     UARTComms_Init();
-    
+    // uint8_t hello[]={'h','e','l','l','o'};
+    // UARTComms_Transmmit_Data(&UARTComms_Port, 0x01, hello, sizeof(hello));
     uint32_t flags;
 
     while(1)
@@ -87,6 +97,7 @@ void CommsTask(void *argument)
                 Motor_RL.mode = MOTOR_CONTROL_POSITION;
                 memcpy(&Motor_RR.target_position, &receivedData[4], sizeof(float));
                 Motor_RR.mode = MOTOR_CONTROL_POSITION;
+                // UARTComms_Transmmit_Data(&UARTComms_Port, 0xF1, receivedData, sizeof(float)*2);
             }
             else if(receivedCMD==0x1B)
             {
@@ -94,6 +105,7 @@ void CommsTask(void *argument)
                 Motor_RL.mode = MOTOR_CONTROL_VELOCITY;
                 memcpy(&Motor_RR.target_velocity, &receivedData[4], sizeof(float));
                 Motor_RR.mode = MOTOR_CONTROL_VELOCITY;
+                // UARTComms_Transmmit_Data(&UARTComms_Port, 0xF1, receivedData, sizeof(float)*2);
             }
             receivedCMD = 0;
         }
